@@ -1,0 +1,4 @@
+info: AuditorManagementSystem.Infrastructure.Data.DatabaseInitializer[0]
+      Default administrator account created. Username: admin
+info: AuditorManagementSystem.Infrastructure.Data.DatabaseInitializer[0]
+      Database initialized at C:\Users\Tommy Paolma\AppData\Local\AuditorManagementSystem\audit.db

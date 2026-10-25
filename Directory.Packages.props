@@ -1,0 +1,39 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WPF Application -->
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
+
+    <!-- Infrastructure -->
+    <PackageVersion Include="Microsoft.Data.Sqlite" Version="10.0.13" />
+    <PackageVersion Include="Dapper" Version="2.1.66" />
+
+    <!-- SQLitePCLRaw native library - upgraded from vulnerable 2.1.11 to patched 2.1.14
+         See: https://github.com/advisories/GHSA-2m69-gcr7-jv3q -->
+    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.14" />
+
+    <!-- NOTE: LiveCharts2 is no longer published on NuGet (package id not found).
+         Charts will be implemented using a compatible WPF charting library in a
+         later phase, or with native WPF drawing. Placeholder kept below. -->
+    <!-- <PackageVersion Include="LiveCharts2" Version="0.16.7" /> -->
+
+    <!-- PDF export -->
+    <PackageVersion Include="QuestPDF" Version="2025.4.1" />
+
+    <!-- Testing -->
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

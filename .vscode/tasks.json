@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Restore dependencies",
+      "type": "dotnet",
+      "command": "restore",
+      "project": "${workspaceFolder}/AuditorManagementSystem.slnx",
+      "group": "build",
+      "problemMatcher": [],
+      "detail": "Restores NuGet packages for the entire solution."
+    },
+    {
+      "label": "Build solution",
+      "type": "dotnet",
+      "command": "build",
+      "project": "${workspaceFolder}/AuditorManagementSystem.slnx",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile",
+      "detail": "Builds the Auditor Management System solution."
+    },
+    {
+      "label": "Run unit tests",
+      "type": "dotnet",
+      "command": "test",
+      "project": "${workspaceFolder}/AuditorManagementSystem.slnx",
+      "group": "test",
+      "problemMatcher": "$msCompile",
+      "detail": "Runs all unit tests in the solution."
+    },
+    {
+      "label": "Run WPF application",
+      "type": "dotnet",
+      "command": "run",
+      "project": "${workspaceFolder}/src/AuditorManagementSystem.App/AuditorManagementSystem.App.csproj",
+      "group": "none",
+      "problemMatcher": [],
+      "detail": "Launches the WPF Auditor Management System desktop application.",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}

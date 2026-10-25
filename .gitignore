@@ -1,0 +1,56 @@
+# Auditor Management System
+# .NET / WPF desktop application
+
+## Build output
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.exe
+*.exe.config
+*.appxrecipe
+*.appxbundle
+*.appxupload
+
+## Visual Studio
+.vs/
+.idea/
+*.slnx
+.vscode/settings.json
+
+## NuGet
+*.nupkg
+*.nupkg.sha512
+*.nuspec
+packages/
+.nuget/
+
+## Local development data (SQLite, receipts, configs)
+*.db
+*.db-shm
+*.db-wal
+**/appdata/
+**/Data/local/
+
+## Environment
+.env
+*.env
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Temporary
+*.tmp
+*.log
+temp/
+tmp/
+
+## SDK Installer (do not commit)
+dotnet-sdk-*.exe

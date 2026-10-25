@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch WPF Application",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "Build solution",
+      "program": "${workspaceFolder}/src/AuditorManagementSystem.App/bin/Debug/net10.0-windows/AuditorManagementSystem.App.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/AuditorManagementSystem.App",
+      "stopAtEntry": false,
+      "enableStepFiltering": true,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "logging": {
+        "moduleLoad": false,
+        "exceptions": "unhandled",
+        "browserStdOut": false
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/views": "${workspaceFolder}/src/AuditorManagementSystem.App/Views"
+      }
+    },
+    {
+      "name": "Attach to WPF Process",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+      "console": "internalConsole"
+    },
+    {
+      "name": "Run Unit Tests",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/tests/AuditorManagementSystem.Core.Tests/bin/Debug/net10.0/AuditorManagementSystem.Core.Tests.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/tests/AuditorManagementSystem.Core.Tests",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
+}

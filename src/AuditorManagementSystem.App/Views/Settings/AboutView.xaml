@@ -1,0 +1,78 @@
+<Page x:Class="AuditorManagementSystem.App.Views.Settings.AboutView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Background="#F5F7FB">
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- App Header -->
+        <Border Grid.Row="0" Padding="20" Background="#111827" CornerRadius="8">
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Width="48" Height="48" Fill="#2563EB" VerticalAlignment="Center">
+                    <Ellipse.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3" Direction="315" Color="#2563EB"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+                <StackPanel Margin="16,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="Auditor Management System" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="Professional Financial Auditing &amp; Transaction Management" FontSize="14" Foreground="#9CA3AF" Margin="0,4,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Version Info -->
+        <Border Grid.Row="1" Padding="24" Margin="0,24,0,0" Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E5E7EB">
+            <StackPanel>
+                <TextBlock Text="Version Information" FontSize="16" FontWeight="SemiBold" Foreground="#111827" Margin="0,0,0,12"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Application" FontSize="13" Foreground="#6B7280" Margin="0,0,0,8"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Auditor Management System" FontSize="13" Foreground="#111827" FontWeight="SemiBold" Margin="0,0,0,8"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Version" FontSize="13" Foreground="#6B7280" Margin="0,0,0,8"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="1.0.0" FontSize="13" Foreground="#111827" FontWeight="SemiBold" Margin="0,0,0,8"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Framework" FontSize="13" Foreground="#6B7280" Margin="0,0,0,8"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text=".NET 10.0 (WPF)" FontSize="13" Foreground="#111827" FontWeight="SemiBold" Margin="0,0,0,8"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Database" FontSize="13" Foreground="#6B7280" Margin="0,0,0,8"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="SQLite (Local)" FontSize="13" Foreground="#111827" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Description -->
+        <Border Grid.Row="2" Padding="24" Margin="0,24,0,0" Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E5E7EB">
+            <StackPanel>
+                <TextBlock Text="About" FontSize="16" FontWeight="SemiBold" Foreground="#111827" Margin="0,0,0,12"/>
+                <TextBlock Text="The Auditor Management System helps auditors and accounting professionals manage financial transactions, track receipts, calculate income and expenses, generate reports, and maintain a complete audit trail." 
+                           FontSize="13" Foreground="#374151" TextWrapping="Wrap" Margin="0,0,0,16"/>
+                <TextBlock Text="Features:" FontSize="13" FontWeight="SemiBold" Foreground="#111827" Margin="0,0,0,8"/>
+                <TextBlock Text="• Secure authentication and role-based access control" FontSize="12" Foreground="#4B5563" Margin="0,2,0,2"/>
+                <TextBlock Text="• Financial transaction management with automatic calculations" FontSize="12" Foreground="#4B5563" Margin="0,2,0,2"/>
+                <TextBlock Text="• Receipt upload, storage, and preview" FontSize="12" Foreground="#4B5563" Margin="0,2,0,2"/>
+                <TextBlock Text="• Interactive financial dashboards and analytics" FontSize="12" Foreground="#4B5563" Margin="0,2,0,2"/>
+                <TextBlock Text="• Professional reports with PDF and CSV export" FontSize="12" Foreground="#4B5563" Margin="0,2,0,2"/>
+                <TextBlock Text="• Complete audit history for all system actions" FontSize="12" Foreground="#4B5563" Margin="0,2,0,2"/>
+                <TextBlock Text="• Data persistence via local SQLite database" FontSize="12" Foreground="#4B5563" Margin="0,2,0,16"/>
+                <TextBlock Text="All financial data is stored locally in a SQLite database. Receipt files are stored in the application data directory." 
+                           FontSize="11" Foreground="#9CA3AF" FontStyle="Italic" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
