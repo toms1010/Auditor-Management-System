@@ -1,4 +1,0 @@
-Starting Auditor Management System...
-Project: C:\Users\Tommy Paolma\Documents\C#_Project\Auditor Management System\src\AuditorManagementSystem.App\AuditorManagementSystem.App.csproj
-info: AuditorManagementSystem.Infrastructure.Data.DatabaseInitializer[0]
-      Database initialized at C:\Users\Tommy Paolma\AppData\Local\AuditorManagementSystem\audit.db

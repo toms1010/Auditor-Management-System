@@ -1,0 +1,93 @@
+<Page x:Class="AuditorManagementSystem.App.Views.FinancialRecords.TransactionEntryView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AuditorManagementSystem.App.Views.FinancialRecords"
+      mc:Ignorable="d"
+      Background="{StaticResource PageBackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource CardBackgroundBrush}" BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1" CornerRadius="12" Padding="24" Margin="0,0,0,16">
+            <TextBlock Text="Transaction Entry" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource PrimaryTextBrush}"
+                       FontFamily="{StaticResource Lato}"/>
+        </Border>
+
+        <!-- Message -->
+        <Border Grid.Row="0" Background="{StaticResource CardBackgroundBrush}" BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,16"
+                Visibility="{Binding MessageVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock Text="{Binding Message}" Foreground="{StaticResource SecondaryTextBrush}" FontSize="13"
+                       FontFamily="{StaticResource Lato}"/>
+        </Border>
+
+        <!-- Form -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="24">
+            <StackPanel>
+                <!-- Reference Number -->
+                <TextBlock Text="Reference Number" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <TextBox Text="{Binding ReferenceNumber, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxBase}"
+                         Margin="0,0,0,16"/>
+
+                <!-- Date -->
+                <TextBlock Text="Transaction Date" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <DatePicker SelectedDate="{Binding TransactionDate}" Style="{StaticResource TextBoxBase}"
+                            Margin="0,0,0,16"/>
+
+                <!-- Description -->
+                <TextBlock Text="Description" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxBase}"
+                         Margin="0,0,0,16" AcceptsReturn="True" TextWrapping="Wrap"/>
+
+                <!-- Type -->
+                <TextBlock Text="Type" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <ComboBox ItemsSource="{Binding TransactionTypes}" SelectedItem="{Binding TransactionType}"
+                          Style="{StaticResource ComboBoxBase}" Margin="0,0,0,16"/>
+
+                <!-- Category -->
+                <TextBlock Text="Category" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}"
+                          Style="{StaticResource ComboBoxBase}" Margin="0,0,0,16"/>
+
+                <!-- Amount -->
+                <TextBlock Text="Amount" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TextBoxBase}" Margin="0,0,0,16"
+                         PreviewTextInput="{Binding Source={x:Static local:CurrencyValidator.Instance}}"/>
+
+                <!-- Payee -->
+                <TextBlock Text="Payee" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <TextBox Text="{Binding Payee, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxBase}"
+                         Margin="0,0,0,16"/>
+
+                <!-- Payment Method -->
+                <TextBlock Text="Payment Method" FontSize="12" FontWeight="Medium" Foreground="{StaticResource SecondaryTextBrush}"
+                           Margin="0,0,0,6" FontFamily="{StaticResource Lato}"/>
+                <ComboBox ItemsSource="{Binding PaymentMethods}" SelectedItem="{Binding PaymentMethod}"
+                          Style="{StaticResource ComboBoxBase}" Margin="0,0,0,20"/>
+
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Cancel" Style="{StaticResource ButtonSecondary}" Command="{Binding CancelCommand}"
+                            Margin="0,0,12,0"/>
+                    <Button Content="Save" Style="{StaticResource ButtonPrimary}" Command="{Binding SaveCommand}"
+                            IsEnabled="{Binding IsSaving, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Invert}"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

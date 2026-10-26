@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AuditorManagementSystem.Core\AuditorManagementSystem.Core.csproj" />
+  <ProjectReference Include="..\AuditorManagementSystem.Core\AuditorManagementSystem.Core.csproj" />
+  <PackageReference Include="ClosedXML" />
   </ItemGroup>
 
   <PropertyGroup>

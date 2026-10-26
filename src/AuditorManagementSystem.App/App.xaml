@@ -2,14 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AuditorManagementSystem.App"
-              xmlns:converters="clr-namespace:AuditorManagementSystem.App.Converters"
->
+             xmlns:converters="clr-namespace:AuditorManagementSystem.App.Converters">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Application-wide control styles and resource dictionaries -->
             <ResourceDictionary.MergedDictionaries>
-                <!-- Theme resources will be merged here -->
+                <ResourceDictionary Source="/Themes;component/AppResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <!-- Global converters -->
             <converters:BoolToBrushConverter x:Key="BoolToBrushConverter"/>
+            <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+            <converters:StatusToBrushConverter x:Key="StatusToBrushConverter"/>
+            <converters:BindingDirectionConverter x:Key="BindingDirectionConverter"/>
+            <converters:CurrencyFormatConverter x:Key="CurrencyFormatConverter"/>
+            <converters:DateTimeFormatConverter x:Key="DateTimeFormatConverter"/>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -6,51 +6,88 @@
         xmlns:local="clr-namespace:AuditorManagementSystem.App.Views.Shell"
         mc:Ignorable="d"
         Title="Auditor Management System"
-        Width="1200" Height="800"
+        Width="1360" Height="800"
         WindowStartupLocation="CenterScreen"
-        Background="#F5F7FB">
+        Background="{StaticResource PageBackgroundBrush}">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Sidebar -->
-        <Border Grid.Column="0" Background="#111827" Padding="0,24,0,0">
+        <!-- ===== SIDEBAR ===== -->
+        <Border Grid.Column="0" Background="{StaticResource SidebarBrush}" Padding="0,24,0,0">
             <StackPanel>
-                <Border Padding="20,0,20,32">
+                <!-- Logo -->
+                <Border Padding="24,0,24,32">
                     <StackPanel>
-                        <TextBlock Text="AuditorMS" FontSize="20" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Text="Auditor Management System" FontSize="11" Foreground="#9CA3AF" Margin="0,4,0,0"/>
+                        <TextBlock Text="AuditorMS" FontSize="22" FontWeight="Bold"
+                                   Foreground="{StaticResource SidebarTextBrush}" FontFamily="{StaticResource Lato}"/>
+                        <TextBlock Text="Auditor Management System" FontSize="11"
+                                   Foreground="{StaticResource SidebarTextSecondaryBrush}" Margin="0,4,0,0"
+                                   FontFamily="{StaticResource Lato}"/>
                     </StackPanel>
                 </Border>
 
-                <ItemsControl ItemsSource="{Binding NavigationItems}">
+                <!-- Group headers -->
+                <ItemsControl ItemsSource="{Binding SidebarGroups}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding Title}" Height="44" HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left" Padding="20,0"
-                                    Background="Transparent" BorderThickness="0"
-                                    Foreground="{Binding IsVisible, Converter={StaticResource BoolToBrushConverter}}"
-                                    FontSize="14" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                                    CommandParameter="{Binding Page}"
-                                    Margin="0,2"/>
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource SidebarGroup}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ItemsControl">
+                            <Setter Property="Margin" Value="0,0,0,8"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
 
-                <Border Padding="20,32,20,0" Margin="0,24,0,0" BorderThickness="0,1,0,0" BorderBrush="#374151">
+                <!-- Navigation items -->
+                <ListBox ItemsSource="{Binding SidebarItems}"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         SelectionMode="Single"
+                         SelectedItem="{Binding SelectedNavItem}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Title}" Style="{StaticResource NavItemButton}"
+                                    Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Page}" Padding="16,10"
+                                    Width="240" HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="16,10"/>
+                            <Setter Property="Margin" Value="0,2"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+
+                <!-- Bottom user section -->
+                <Border Padding="20,32,20,0" Margin="0,24,0,0" BorderThickness="0,1,0,0"
+                        BorderBrush="{StaticResource BorderBrush}">
                     <StackPanel>
-                        <TextBlock Text="{Binding CurrentUser.FullName}" FontSize="13" FontWeight="SemiBold" Foreground="White" Margin="0,0,0,4"/>
-                        <TextBlock Text="{Binding CurrentUser.Role}" FontSize="11" Foreground="#9CA3AF" Margin="0,0,0,16"/>
-                        <Button Content="Logout" Height="40" Background="#DC2626" Foreground="White" BorderThickness="0"
-                                Command="{Binding NavigateCommand}" CommandParameter="Logout"/>
+                        <TextBlock Text="{Binding CurrentUser.FullName}" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="{StaticResource SidebarTextBrush}" Margin="0,0,0,4"
+                                   FontFamily="{StaticResource Lato}"/>
+                        <TextBlock Text="{Binding CurrentUser.Role}" FontSize="11"
+                                   Foreground="{StaticResource SidebarTextSecondaryBrush}" Margin="0,0,0,16"
+                                   FontFamily="{StaticResource Lato}"/>
+                        <Button Content="Logout" Height="40" Background="{StaticResource ErrorBrush}" Foreground="White"
+                                BorderThickness="0" FontFamily="{StaticResource Lato}" FontSize="14" FontWeight="SemiBold"
+                                Command="{Binding NavigateCommand}" CommandParameter="Logout"
+                                HorizontalAlignment="Stretch"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
         </Border>
 
-        <!-- Main Content -->
+        <!-- ===== MAIN CONTENT ===== -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="64"/>
@@ -58,21 +95,41 @@
             </Grid.RowDefinitions>
 
             <!-- Top Bar -->
-            <Border Grid.Row="0" Background="White" BorderThickness="0,0,0,1" BorderBrush="#E5E7EB" Padding="24,0">
+            <Border Grid.Row="0" Background="{StaticResource CardBackgroundBrush}" BorderThickness="0,0,0,1"
+                    BorderBrush="{StaticResource BorderLightBrush}" Padding="24,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding PageTitle}" FontSize="18" FontWeight="SemiBold" Foreground="#111827" VerticalAlignment="Center"/>
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="24,0,0,0">
-                        <TextBlock Text="{Binding CurrentUser.Username}" FontSize="13" Foreground="#111827" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBlock Text="{Binding PageTitle}" FontSize="18" FontWeight="SemiBold"
+                               Foreground="{StaticResource PrimaryTextBrush}" VerticalAlignment="Center"
+                               FontFamily="{StaticResource Lato}"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
+                                Margin="24,0,0,0">
+                        <TextBlock Text="{Binding CurrentUser.Username}" FontSize="13"
+                                   Foreground="{StaticResource SecondaryTextBrush}" VerticalAlignment="Center"
+                                   Margin="0,0,12,0" FontFamily="{StaticResource Lato}"/>
+                        <TextBlock Text="Search" FontSize="14" Foreground="{StaticResource SecondaryTextBrush}"
+                                   VerticalAlignment="Center" Margin="0,0,8,0"
+                                   MouseLeftButtonUp="Search_OnMouseLeftButtonUp" FontFamily="{StaticResource Lato}"/>
                     </StackPanel>
                 </Grid>
             </Border>
 
             <!-- Content Area -->
-            <ContentControl Grid.Row="1" Content="{Binding CurrentView}" Padding="24"/>
+            <Border Grid.Row="1" Background="{StaticResource BackgroundBrush}" Padding="0,16,0,0">
+                <ContentControl Content="{Binding CurrentView}"
+                                Margin="0,0,0,24">
+                    <ContentControl.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <ContentPresenter/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ContentControl.ContentTemplate>
+                </ContentControl>
+            </Border>
         </Grid>
     </Grid>
 </Window>
